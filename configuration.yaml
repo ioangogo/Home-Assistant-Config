@@ -119,10 +119,7 @@ device_tracker:
     host: 192.168.1.1:8080
     username: root
     password: !secret normalpass
-#  - platform: icloud
-#    username: !secret edgecase
-#    password: !secret edgecasepass
-#    account_name: Carys Loosley
+
 rest_command:
   ipcoff:
     url: "http://192.168.1.22:8009/sleep"
