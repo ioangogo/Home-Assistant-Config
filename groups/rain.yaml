@@ -1,0 +1,7 @@
+
+name: Rain
+view: no
+icon: mdi:weather-pouring
+entities:
+  - sensor.netatmo_wombatrain_sum_rain_24
+  - sensor.netatmo_wombatrain_sum_rain_1

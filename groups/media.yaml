@@ -1,0 +1,8 @@
+
+name: Media
+view: no
+icon: mdi:radio
+entities:
+  - media_player.loosleyboudiorcast
+  - media_player.loosleyloungecast
+  - media_player.mpd

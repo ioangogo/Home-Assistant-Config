@@ -1,0 +1,5 @@
+name: TTS
+view: no
+icon: mdi:text-to-speech
+entities:
+  - media_player.gstreamer

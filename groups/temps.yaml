@@ -1,0 +1,6 @@
+view: no
+icon: mdi:thermometer
+name: Temperature
+entities:
+ - sensor.windows
+ - sensor.averagetemp

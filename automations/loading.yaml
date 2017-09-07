@@ -1,0 +1,16 @@
+alias: "Load Stream"
+trigger:
+ - platform: state
+   entity_id: sensor.loadingartist
+   from: 'offline'
+   to: 'streaming'
+condition:
+  condition: time
+  # At least one of the following is required.
+  after: '22:00:00'
+  weekday:
+    - mon
+    - wed
+    - thu
+action:
+   service: rest_command.loadplay

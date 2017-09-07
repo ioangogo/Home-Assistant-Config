@@ -1,0 +1,248 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret lat
+  longitude: !secret long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 56.785
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+#  packages: !include_dir_named packages
+  customize: !include cus.yaml
+
+# Show links to resources in log and frontend
+# Enables the frontend
+frontend:
+
+panel_iframe:
+  router:
+    title: 'Router'
+    url: 'http://192.168.1.1:8080'
+
+recorder:
+ db_url: !secret sql
+
+# Enables configuration UI
+config:
+
+
+logger:
+ default: error
+ logs: 
+  homeassistant.setup: info
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret httppass
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+zwave:
+  usb_path: /dev/ttyACM0
+
+apiai:
+
+alexa:
+
+intent_script: !include_dir_named intents/
+shopping_list:
+
+emulated_hue:
+  type: google_home
+  listen_port: 80
+  off_maps_to_on_domains:
+    - script
+    - scene
+  expose_by_default: true
+  exposed_domains:
+    - light
+    - media_player
+    - switch
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+camera:
+  - platform: generic
+    still_image_url: http://192.168.1.11/M32N.jpg
+    name: "M32 Northbound"
+  - platform: generic
+    still_image_url: http://192.168.1.11/M32S.jpg
+    name: "M32 Southbound"
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+ios:
+# Weather Prediction
+
+netatmo:
+  api_key: !secret netatmoapikey
+  secret_key: !secret netatmokey
+  username: !secret netatmoemail
+  password: !secret normalpass
+
+sensor netatmo: !include netatmo.yaml
+
+sensor scrape: !include_dir_list scrape/
+
+climate:
+  - platform: netatmo
+    scan_interval: 10
+
+sensor: !include_dir_list sensors/
+
+
+weather:
+  - platform: metoffice
+    api_key: !secret metkey 
+device_tracker:
+  - platform: owntracks
+    max_gps_accuracy: 50
+    track_new_devices: no
+  - platform: luci
+    host: 192.168.1.1:8080
+    username: root
+    password: !secret normalpass
+#  - platform: icloud
+#    username: !secret edgecase
+#    password: !secret edgecasepass
+#    account_name: Carys Loosley
+rest_command:
+  ipcoff:
+    url: "http://192.168.1.22:8009/sleep"
+  loadplay:
+    url: "http://192.168.1.65:7531/?play_url=www.twitch.tv/loadingartist"
+
+#hdmi_cec:
+#    platform: media_player
+#    devices:
+#       TV: 0.0.0.0
+#       Onkyo: 1.0.0.0
+#       Blueray: 1.1.0.0
+#       Chromecast: 1.3.0.0
+
+switch:
+  - platform: wake_on_lan
+    host: 192.168.1.22
+    mac_address: "FC-AA-14-07-AE-D2"
+    name: Ioan-PC
+    turn_off:
+      service: "rest_command.ipcoff"
+  - platform: template
+    switches:
+      livingrooms:
+        friendly_name: "Living room light"
+        value_template: "{{ is_state('group.livroom', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          entity_id: group.livroom
+        turn_off:
+          service: switch.turn_on
+          entity_id: group.livroom
+
+# Text to speech
+tts:
+  platform: google
+
+media_player:
+  - platform: cast
+    host: 192.168.1.13
+#  - platform: mpd
+#    friendly_name: Ioans_MPD
+#    host: 192.168.1.65
+  - platform: gstreamer
+    pipeline: "audioresample ! audioconvert ! audio/x-raw,rate=48000,channels=2,format=S16LE ! wavenc ! filesink location=/tmp/snapfifo"
+  - platform: spotify
+    client_id: !secret spotid
+    client_secret: !secret spotsec
+
+mqtt:
+  broker: 192.168.1.11
+  port: 1883
+  username: hass
+  password: !secret mqqtpass
+
+binary_sensor:
+  - platform: ping
+    host: google.com
+
+input_boolean:
+  overide_home:
+    name: Set Ioan To home
+    initial: off
+    icon: mdi:home
+  nightmode:
+    name: Night Mode
+    initial: off
+    icon: mdi:weather-night
+  huwbristol:
+    name: Night Mode
+    initial: on
+  ioanbristol:
+    initial: on
+
+zone: !include zones.yaml
+
+group: !include_dir_named groups/
+
+automation: !include_dir_list automations/
+
+script: !include_dir_named scripts/
+
+scene: !include_dir_list scence
+
+# this is not in use yet and 
+alarm_control_panel:
+  - platform: manual
+    code: !secret alarmpin
+
+
+notify:
+  - name: pushetta
+    platform: pushetta
+    api_key: !secret pushetkey
+    channel_name: LoosleyHASS
+  - platform: html5
+    gcm_api_key: !secret gcmkey
+    gcm_sender_id: !secret gcmid
+  - name: Doorbell
+    platform: group
+    services:
+      - service: html5
+      - service: pushetta
+
+input_select:
+  radio_station:
+    name: 'Select Radio Station:'
+    options:
+     - Radio 1
+     - Radio 2
+     - Radio X
+  chromecast_radio:
+    name: 'Select Speakers:'
+    options:
+      - Livingroom
+      - H&D Bedroom
+      - Ioans Room
+    initial: Livingroom
+    icon: mdi:speaker-wireless
+
+tradfri:
+  host: 192.168.1.41
+  api_key: !secret ikea

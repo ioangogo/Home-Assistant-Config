@@ -1,0 +1,5 @@
+name: Traffic
+view: yes
+entities:
+ - camera.m32_northbound
+ - camera.m32_southbound

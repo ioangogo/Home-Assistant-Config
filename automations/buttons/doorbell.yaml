@@ -1,0 +1,10 @@
+alias: Doorbell Rung
+initial_state: True
+trigger:
+  platform: mqtt
+  topic: doorbell/ring
+  payload: 'Ring'
+action:
+- service: notify.Doorbell
+  data:
+    message: "Someone Is at the door"

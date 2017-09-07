@@ -1,0 +1,6 @@
+name: Ioans Room
+view: yes
+entities:
+ - media_player.mpd
+ - switch.ioanpc
+ - light.ioans_room

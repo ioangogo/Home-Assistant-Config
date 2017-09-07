@@ -1,0 +1,9 @@
+alias: 'Ioan Leaves Bristol'
+trigger:
+- platform: zone
+  entity_id: device_tracker.ioan_phone
+  zone: zone.bristol
+  event: leave
+action:
+- service: input_boolean.turn_off
+  entity_id: input_boolean.ioanbristol

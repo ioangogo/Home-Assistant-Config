@@ -1,0 +1,2 @@
+speech: 
+    text: "It has rained about {{ states('sensor.netatmo_wombatrain_sum_rain_1') }} mm in the last hour, in the last 24h it has rained {{ states('sensor.netatmo_wombatrain_sum_rain_24') }} mm"

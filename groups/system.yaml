@@ -1,0 +1,6 @@
+
+name: Media
+view: yes
+icon: mdi:linux
+entities:
+  - group.speeddotnet

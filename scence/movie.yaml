@@ -1,0 +1,6 @@
+name: Movies
+entities:
+  light.living_room_lamp:
+    state: on
+    brightness: 50
+    transition: 10

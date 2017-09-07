@@ -1,0 +1,22 @@
+alias: 'leave Bristol'
+trigger:
+- platform: state
+  entity_id: input_boolean.huwbristol
+  to: 'off'
+- platform: state
+  entity_id: input_boolean.ioanbristol
+  to: 'off'
+condition:
+  condition: and
+  conditions:
+  - condition: state
+    entity_id: input_boolean.ioanbristol
+    state: 'off'
+  - condition: state
+    entity_id: input_boolean.huwbristol
+    state: 'off'
+action:
+- service: climate.set_away_mode
+  data:
+    entity_id: climate.hall
+    away_mode: true

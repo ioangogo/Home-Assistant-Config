@@ -1,0 +1,9 @@
+alias: "Windows"
+trigger:
+    platform: state
+    entity_id: sensor.windows 
+action:
+    service: notify.pushsafer
+    data_template:
+        title: ""
+        message: "{{ states('sensor.windows') }}" 

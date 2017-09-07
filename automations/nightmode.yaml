@@ -1,0 +1,12 @@
+alias: "Nightmode"
+trigger:
+  - platform: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: -6
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+action:
+  

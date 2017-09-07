@@ -1,0 +1,6 @@
+name: Living Room
+view: yes
+entities:
+ -  media_player.loosleyloungecast
+ -  light.living_room_lamp
+ -  media_player.hdmi_0

@@ -1,0 +1,9 @@
+alias: 'Huw Enter Bristol'
+trigger:
+- platform: zone
+  entity_id: device_tracker.huw_opo
+  zone: zone.bristol
+  event: enter
+action:
+- service: input_boolean.turn_on
+  entity_id: input_boolean.huwbristol

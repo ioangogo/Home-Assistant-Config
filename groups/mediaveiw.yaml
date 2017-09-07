@@ -1,0 +1,9 @@
+
+name: Media
+view: yes
+icon: mdi:radio
+entities:
+  - group.radio
+  - group.media
+  - group.ttsout
+  - media_player.spotify

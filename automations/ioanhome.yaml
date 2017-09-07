@@ -1,0 +1,12 @@
+alias: 'ioan home'
+trigger:
+    platform: zone
+    event: enter
+    zone: zone.home
+    entity_id: device_tracker.ioan_phone
+action:
+    service: switch.turn_on
+    data:
+        entity_id: switch.ioanpc
+
+

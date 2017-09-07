@@ -1,0 +1,7 @@
+view: no
+name: speedtest.net
+icon: mdi:speedometer
+entities:
+ - sensor.speedtest_download
+ - sensor.speedtest_upload
+ - sensor.speedtest_ping

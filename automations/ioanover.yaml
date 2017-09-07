@@ -1,0 +1,10 @@
+alias: "Home overide"
+trigger:
+  platform: state
+  entity_id: input_boolean.overide_home
+  to: 'on'
+action:
+  service: device_tracker.see
+  data:
+    dev_id: ioan_phone
+    location_name: home

@@ -1,0 +1,10 @@
+alias: 'ioans left'
+trigger:
+    platform: zone
+    event: leave
+    zone: zone.home
+    entity_id: device_tracker.ioan_phone
+action:
+  - service: homeassistant.turn_off
+    data:
+        entity_id: group.iroom

@@ -1,0 +1,9 @@
+alias: 'Huw Leaves Bristol'
+trigger:
+- platform: zone
+  entity_id: device_tracker.huw_opo
+  zone: zone.bristol
+  event: leave
+action:
+- service: input_boolean.turn_off
+  entity_id: input_boolean.huwbristol

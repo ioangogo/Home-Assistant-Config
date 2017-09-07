@@ -1,0 +1,6 @@
+platform: template
+sensors:
+    averagetemp:
+        value_template: '{{ (states.climate.hall.attributes.current_temperature | float + states.sensor.netatmo_indoor_temperature.state | float) /2 }}'
+        unit_of_measurement: '°C'
+        friendly_name: 'Average Temperature'

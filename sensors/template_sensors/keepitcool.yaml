@@ -1,0 +1,5 @@
+platform: template
+sensors:
+  windows:
+    value_template: "{%if (states.sensor.netatmo_wombat_outdoor_temperature.state | float)  < states.sensor.averagetemp.state | float %}The Windows can be open{%else%}Close the windows{% endif %}"
+    friendly_name: 'Keep It Cool'

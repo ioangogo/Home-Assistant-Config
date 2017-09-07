@@ -1,0 +1,22 @@
+alias: 'Enter Bristol'
+trigger:
+- platform: state
+  entity_id: input_boolean.huwbristol
+  to: 'on'
+- platform: state
+  entity_id: input_boolean.ioanbristol
+  to: 'on'
+condition:
+  condition: and
+  conditions:
+  - condition: state
+    entity_id: input_boolean.ioanbristol
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.huwbristol
+    state: 'on'
+action:
+- service: climate.set_away_mode
+  data:
+    entity_id: climate.hall
+    away_mode: false

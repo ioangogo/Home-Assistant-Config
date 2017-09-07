@@ -1,0 +1,4 @@
+name: Huw's and Deb's Room
+view: yes
+entities:
+ - media_player.loosleyboudiorcast

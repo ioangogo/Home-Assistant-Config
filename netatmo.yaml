@@ -1,0 +1,11 @@
+  platform: netatmo
+  modules:
+    Indoor:
+      - temperature
+      - humidity
+    Wombat Outdoor:
+      - temperature
+    WombatRain:
+      - sum_rain_24
+      - sum_rain_1
+
