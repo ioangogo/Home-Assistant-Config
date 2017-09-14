@@ -26,3 +26,50 @@ html5_push_registrations.conf
 ip_bans.yaml
 /icloud/*
 zones.yaml
+
+# General File Extensions
+
+*.pid
+*.xml
+*.csr
+*.crt
+*.key
+*.conf
+*.db-journal
+*.log
+*.db
+*.txt
+*.deb
+*.sh
+*.pickle
+
+# Folders
+www
+lib
+deps
+tts
+test
+
+# Files
+
+OZW_Log.txt
+secrets.yaml
+known_devices.yaml
+pyozw.sqlite
+clear_mqtt_topics
+google_calendars.yaml
+known_devices.yaml
+updatesnapcast
+usps_cookies.pickle
+zwave_device_config.yaml
+fixperms
+
+# Other Github Related Files
+.*
+!/.gitignore
+usps_cookies.pickle
+packages/zones.yaml
+packages/device_tracker.yaml
+custom_components/sensor/__pycache__/*.pyc
+custom_components/media_player/__pycache__/*.pyc
+custom_components/__pycache__/*.pyc

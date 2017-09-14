@@ -1,0 +1,9 @@
+
+name: Wind
+view: no
+icon: mdi:weather-windy
+entities:
+  - sensor.netatmo_wombat_wind_angle
+  - sensor.netatmo_wombat_wind_strength
+  - sensor.netatmo_wombat_wind_gust_angle
+  - sensor.netatmo_wombat_wind_gust_strength

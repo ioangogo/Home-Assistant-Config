@@ -1,4 +1,0 @@
-view: yes
-icon: mdi:alarm-bell
-entities:
- - alarm_control_panel.ha_alarm

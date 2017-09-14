@@ -2,9 +2,10 @@ view: yes
 icon: mdi:home
 entities:
  - sun.sun
- - device_tracker.ioan_phone
- - device_tracker.huw_opo
+ - device_tracker.carys
  - device_tracker.debbie_op2
+ - device_tracker.huw_opo
+ - device_tracker.ioan_phone
  - climate.hall
  - group.ikealighting
  - sensor.ssl_certificate_expiry

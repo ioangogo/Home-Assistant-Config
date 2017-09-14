@@ -1,0 +1,9 @@
+alias: 'Set dark theme for the night'
+trigger:
+  - platform: state
+    entity_id: sun.sun
+    to: below_horizon
+action:
+  - service: frontend.set_theme
+    data:
+      name: darkred

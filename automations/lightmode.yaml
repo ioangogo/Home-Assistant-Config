@@ -1,0 +1,9 @@
+alias: 'Set light theme'
+trigger:
+  - platform: state
+    entity_id: sun.sun
+    to: above_horizon
+action:
+  - service: frontend.set_theme
+    data:
+      name: default

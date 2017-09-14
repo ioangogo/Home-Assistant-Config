@@ -1,5 +1,4 @@
-view: yes
+view: no
 icon: mdi:alarm-bell
 entities:
- - alarm_control_panel.ha_alarm
  - binary_sensor.kaipule_unknown_type0003_id0002_sensor

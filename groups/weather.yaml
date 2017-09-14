@@ -5,3 +5,4 @@ icon: mdi:weather-partlycloudy
 entities:
   - group.rain
   - weather.met_office_bristol_city_fc
+  - group.wind

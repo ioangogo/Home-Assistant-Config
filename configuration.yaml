@@ -16,6 +16,7 @@ homeassistant:
 # Show links to resources in log and frontend
 # Enables the frontend
 frontend:
+  themes: !include themes.yaml
 
 panel_iframe:
   router:
@@ -39,7 +40,9 @@ http:
   api_password: !secret httppass
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
-
+  use_x_forwarded_for: True
+  trusted_networks:
+    - 192.168.1.0/24
 zwave:
   usb_path: /dev/ttyACM0
 
