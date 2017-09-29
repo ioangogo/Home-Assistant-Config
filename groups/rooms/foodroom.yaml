@@ -2,4 +2,5 @@ name: Food Room
 view: yes
 entities:
  - media_player.food_room_chromecast
+ - group.fishtank
 # - sensor.netatmo_indoor_*

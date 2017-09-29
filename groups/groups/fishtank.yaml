@@ -1,0 +1,5 @@
+name: Fish Tank
+view: no
+icon: mdi:fish
+entities:
+ - sensor.fish_tank_temperature

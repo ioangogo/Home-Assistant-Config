@@ -2,3 +2,4 @@ name: Huw's and Deb's Room
 view: yes
 entities:
  - media_player.loosleyboudiorcast
+ - light.master_bedroom_light

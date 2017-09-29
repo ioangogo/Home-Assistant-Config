@@ -1,0 +1,4 @@
+platform: mqtt
+state_topic: "Fishtank/temp/Temperature"
+name: "Fish Tank Temperature"
+unit_of_measurement: "C"

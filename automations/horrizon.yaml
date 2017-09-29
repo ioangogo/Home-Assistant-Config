@@ -6,7 +6,7 @@ trigger:
   - platform: numeric_state
     entity_id: sun.sun
     value_template: '{{ state.attributes.elevation }}'
-    below: 0
+    below: 1.0154538
 condition:
   - condition: and
     conditions:
@@ -16,11 +16,11 @@ condition:
     - condition:  numeric_state
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
-      below: 0
+      below: 1.0154538
 
 action:
   - service: homeassistant.turn_on
     data:
-      entity_id: group.ikealighting
+      entity_id: group.horrizonlight
       brightness: 255
       color_temp: 450

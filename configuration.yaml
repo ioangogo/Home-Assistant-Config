@@ -55,7 +55,7 @@ shopping_list:
 
 emulated_hue:
   type: google_home
-  listen_port: 80
+  listen_port: 8300
   off_maps_to_on_domains:
     - script
     - scene
@@ -246,3 +246,6 @@ input_select:
 tradfri:
   host: 192.168.1.41
   api_key: !secret ikea
+
+mqtt_statestream:
+  base_topic: homeassistant
