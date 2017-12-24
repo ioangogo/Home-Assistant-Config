@@ -9,4 +9,6 @@ condition:
     entity_id: sun.sun
     state: below_horizon
 action:
-  
+    service: notify.twitter
+    data:
+        message: "\U0001f307 Good Night, the sun just set \U0001f307"

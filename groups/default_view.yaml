@@ -13,3 +13,4 @@ entities:
  - group.temps
  - binary_sensor.ping_binary_sensor
  - updater.updater
+ - group.remotes

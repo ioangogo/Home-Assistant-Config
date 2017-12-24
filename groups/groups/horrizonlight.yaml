@@ -2,5 +2,5 @@ name: Horrizon lights
 view: no
 icon: mdi:lightbulb-outline
 entities:
- - light.living_room_lamp
+ - light.living_room
  - light.landing

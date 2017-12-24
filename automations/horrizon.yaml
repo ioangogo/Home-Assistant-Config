@@ -19,8 +19,13 @@ condition:
       below: 1.0154538
 
 action:
-  - service: homeassistant.turn_on
+  - service: light.turn_on
     data:
-      entity_id: group.horrizonlight
+      entity_id: group.livingroom
       brightness: 255
       color_temp: 450
+  - service: light.turn_on
+    data:
+      entity_id: light.window_lights
+      effect: candy cane
+      brightness_pct: 50

@@ -10,18 +10,35 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
-#  packages: !include_dir_named packages
+  packages: !include_dir_named packages
   customize: !include cus.yaml
 
 # Show links to resources in log and frontend
 # Enables the frontend
+
+google_assistant:
+  project_id: loosley-house
+  client_id: dkg2YmsJSSZEHCwUYPDGZY03xVbB4U2vEehPQdrM3IImBiOvhVUK
+  access_token: hCbtOMVd2VY92adSfYZL9JgXi0BIhav3QbgTWD6awbrnqBXpW8gMSJ2atEqvw2rpfQ6e9xv4Pp7Gq3DG
+  api_key: AIzaSyCRN-OPjA_sfaacuJM48oqgYLvntQrv79c 
+  exposed_domains:
+    - media_player
+    - switch
+    - light
+
 frontend:
   themes: !include themes.yaml
+
+tradfri:
+  host: 192.168.1.58
+
+map:
+
 
 panel_iframe:
   router:
     title: 'Router'
-    url: 'http://192.168.1.1:8080'
+    url: 'http://192.168.1.1:80'
 
 recorder:
  db_url: !secret sql
@@ -46,7 +63,6 @@ http:
 zwave:
   usb_path: /dev/ttyACM0
 
-apiai:
 
 alexa:
 
@@ -71,13 +87,6 @@ updater:
 # Discover some devices automatically
 discovery:
 
-camera:
-  - platform: generic
-    still_image_url: http://192.168.1.11/M32N.jpg
-    name: "M32 Northbound"
-  - platform: generic
-    still_image_url: http://192.168.1.11/M32S.jpg
-    name: "M32 Southbound"
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -119,7 +128,7 @@ device_tracker:
     max_gps_accuracy: 50
     track_new_devices: no
   - platform: luci
-    host: 192.168.1.1:8080
+    host: 192.168.1.1:80
     username: root
     password: !secret normalpass
 
@@ -137,6 +146,15 @@ rest_command:
 #       Blueray: 1.1.0.0
 #       Chromecast: 1.3.0.0
 
+telegram_bot:
+  - platform: webhooks
+    api_key: 341132699:AAFkCha2I8Davh2JlkWWEOoUqBpTEHXGJaA
+    url: https://huwloosley.plus.com
+    parse_mode: html
+    allowed_chat_ids:
+        - "-294711871"
+        - 423466814
+
 switch:
   - platform: wake_on_lan
     host: 192.168.1.22
@@ -147,7 +165,7 @@ switch:
   - platform: template
     switches:
       livingrooms:
-        friendly_name: "Living room light"
+        friendly_name: "Living room lights"
         value_template: "{{ is_state('group.livroom', 'on') }}"
         turn_on:
           service: switch.turn_on
@@ -163,11 +181,9 @@ tts:
 media_player:
   - platform: cast
     host: 192.168.1.13
-#  - platform: mpd
-#    friendly_name: Ioans_MPD
-#    host: 192.168.1.65
-  - platform: gstreamer
-    pipeline: "audioresample ! audioconvert ! audio/x-raw,rate=48000,channels=2,format=S16LE ! wavenc ! filesink location=/tmp/snapfifo"
+  - platform: kodi
+    name: "Living Room"
+    host: 192.168.1.49
   - platform: spotify
     client_id: !secret spotid
     client_secret: !secret spotsec
@@ -221,6 +237,12 @@ notify:
   - platform: html5
     gcm_api_key: !secret gcmkey
     gcm_sender_id: !secret gcmid
+  - name: twitter
+    platform: twitter
+    consumer_key: !secret twitterck
+    consumer_secret: !secret twittercs
+    access_token: !secret twitterat
+    access_token_secret: !secret twitterats
   - name: Doorbell
     platform: group
     services:
@@ -243,9 +265,6 @@ input_select:
     initial: Livingroom
     icon: mdi:speaker-wireless
 
-tradfri:
-  host: 192.168.1.41
-  api_key: !secret ikea
 
-mqtt_statestream:
-  base_topic: homeassistant
+#mqtt_statestream:
+#  base_topic: homeassistant

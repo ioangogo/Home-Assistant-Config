@@ -1,3 +1,5 @@
 switch.ioanpc:
     friendly_name: Ioan's PC
     icon: mdi:desktop-tower
+sensor.fish_tank_temperature:
+    icon: mdi:thermometer

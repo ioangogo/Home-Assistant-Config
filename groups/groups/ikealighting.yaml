@@ -2,7 +2,7 @@ name: IKEA Tradfri
 view: no
 icon: mdi:lightbulb-outline
 entities:
- - light.living_room_lamp
+ - light.living_room
  - light.ioans_light
  - light.landing
  - light.master_bedroom_light

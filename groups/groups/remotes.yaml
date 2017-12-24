@@ -1,0 +1,6 @@
+name: IKEA Tradfri Remotes
+view: no
+icon: mdi:lightbulb-outline
+entities:
+ - sensor.landing_remote
+ - sensor.living_room_remote

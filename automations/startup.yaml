@@ -1,0 +1,7 @@
+trigger:
+  platform: homeassistant
+  event: start
+action:
+  service: notify.twitter
+  data:
+    message: Hello, Just woke up
