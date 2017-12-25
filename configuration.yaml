@@ -103,34 +103,22 @@ sun:
 ios:
 # Weather Prediction
 
-#netatmo:
-#  api_key: !secret netatmoapikey
-#  secret_key: !secret netatmokey
-#  username: !secret netatmoemail
-#  password: !secret normalpass
-
-sensor netatmo: !include netatmo.yaml
 
 sensor scrape: !include_dir_list scrape/
 
-climate:
-  - platform: netatmo
-    scan_interval: 10
-
 sensor: !include_dir_list sensors/
 
-
-#weather:
-#  - platform: metoffice
-#    api_key: !secret metkey 
 device_tracker:
 #  - platform: owntracks
 #    max_gps_accuracy: 50
 #    track_new_devices: no
-  - platform: luci
+    platform: luci
     host: 192.168.1.1:80
     username: root
     password: !secret normalpass
+
+shell_command:
+  clouldutil: "sh /home/homeassistant/.homeassistant/utils/cloud.sh"
 
 rest_command:
   ipcoff:
@@ -145,15 +133,6 @@ rest_command:
 #       Onkyo: 1.0.0.0
 #       Blueray: 1.1.0.0
 #       Chromecast: 1.3.0.0
-
-#telegram_bot:
-#  - platform: webhooks
-#    api_key: 341132699:AAFkCha2I8Davh2JlkWWEOoUqBpTEHXGJaA
-#    url: https://huwloosley.plus.com
-#    parse_mode: html
-#    allowed_chat_ids:
-        - "-294711871"
-        - 423466814
 
 switch:
   - platform: wake_on_lan
@@ -184,9 +163,6 @@ media_player:
   - platform: kodi
     name: "Living Room"
     host: 192.168.1.49
-  - platform: spotify
-    client_id: !secret spotid
-    client_secret: !secret spotsec
 
 mqtt:
   broker: 192.168.1.11
@@ -230,19 +206,9 @@ alarm_control_panel:
 
 
 notify:
-  - name: pushetta
-    platform: pushetta
-    api_key: !secret pushetkey
-    channel_name: LoosleyHASS
   - platform: html5
     gcm_api_key: !secret gcmkey
     gcm_sender_id: !secret gcmid
-  - name: twitter
-    platform: twitter
-    consumer_key: !secret twitterck
-    consumer_secret: !secret twittercs
-    access_token: !secret twitterat
-    access_token_secret: !secret twitterats
   - name: Doorbell
     platform: group
     services:

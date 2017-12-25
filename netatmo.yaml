@@ -1,4 +1,4 @@
-  platform: netatmo
+:  platform: netatmo
   modules:
     Indoor:
       - temperature

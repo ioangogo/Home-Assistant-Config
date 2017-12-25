@@ -1,0 +1,55 @@
+# This package conatains all of the componet that relies on internet accsess
+# the plan is to rename the file cloud.yaml.down when the internet is down to prevent home assistant
+# wasting resorces when the network is down
+
+netatmo:
+  api_key: !secret netatmoapikey
+  secret_key: !secret netatmokey
+  username: !secret netatmoemail
+  password: !secret normalpass
+
+sensor:
+  platform: netatmo
+  modules:
+    Indoor:
+      - temperature
+      - humidity
+    Wombat Outdoor:
+      - temperature
+    WombatRain:
+      - sum_rain_24
+      - sum_rain_1
+
+telegram_bot:
+  - platform: webhooks
+    api_key: 341132699:AAFkCha2I8Davh2JlkWWEOoUqBpTEHXGJaA
+    url: https://huwloosley.plus.com
+    parse_mode: html
+    allowed_chat_ids:
+        - "-294711871"
+        - 423466814
+
+weather:
+  - platform: metoffice
+    api_key: !secret metkey
+
+climate:
+  - platform: netatmo
+    scan_interval: 10
+
+media_player:
+  - platform: spotify
+    client_id: !secret spotid
+    client_secret: !secret spotsec
+
+notify:
+  - name: twitter
+    platform: twitter
+    consumer_key: !secret twitterck
+    consumer_secret: !secret twittercs
+    access_token: !secret twitterat
+    access_token_secret: !secret twitterats
+  - name: pushetta
+    platform: pushetta
+    api_key: !secret pushetkey
+    channel_name: LoosleyHASS
