@@ -1,0 +1,11 @@
+alias: "movie start"
+trigger:
+    platform: state
+    entity_id: media_player.living_room
+    from: 'playing'
+action:
+    service: light.turn_on
+    entity_id: group.livingroom
+    data:
+        brightness_pct: 100
+        transition: 30

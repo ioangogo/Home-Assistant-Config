@@ -109,10 +109,10 @@ sensor scrape: !include_dir_list scrape/
 sensor: !include_dir_list sensors/
 
 device_tracker:
-#  - platform: owntracks
-#    max_gps_accuracy: 50
-#    track_new_devices: no
-    platform: luci
+  - platform: owntracks
+    max_gps_accuracy: 50
+    track_new_devices: no
+  - platform: luci
     host: 192.168.1.1:80
     username: root
     password: !secret normalpass

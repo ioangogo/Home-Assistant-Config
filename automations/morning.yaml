@@ -1,16 +1,17 @@
-alias: "Nightmode"
+alias: "morning"
 trigger:
   - platform: numeric_state
     entity_id: sun.sun
     value_template: '{{ state.attributes.elevation }}'
-    below: -6
+    above: -6
 condition:
   - condition: state
     entity_id: sun.sun
-    state: below_horizon
+    state: above_horizon
 action:
-  - service: input_boolean.turn_on
+  - service: input_boolean.turn_off
     entity_id: input_boolean.nightmode
+
   - service: notify.twitter
     data:
-        message: "\U0001f307 Good Night, the sun just set \U0001f307"
+        message: "\U0001f307 Good Morning \U0001f307"
