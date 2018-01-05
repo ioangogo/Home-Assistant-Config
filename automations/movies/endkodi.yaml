@@ -3,9 +3,13 @@ trigger:
     platform: state
     entity_id: media_player.living_room
     from: 'playing'
+condition:
+    condition: state
+    entity_id: 'group.livingroom'
+    state: "on"
 action:
-    service: light.turn_on
+  - service: light.turn_on
     entity_id: group.livingroom
     data:
         brightness_pct: 100
-        transition: 30
+        transition: 10

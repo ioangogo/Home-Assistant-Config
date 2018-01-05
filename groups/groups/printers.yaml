@@ -1,0 +1,4 @@
+name: Printers
+view: no
+entities:
+ - sensor.mg7700lan

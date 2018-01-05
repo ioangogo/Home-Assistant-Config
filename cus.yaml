@@ -3,3 +3,5 @@ switch.ioanpc:
     icon: mdi:desktop-tower
 sensor.fish_tank_temperature:
     icon: mdi:thermometer
+zone.uwe:
+    entity_picture: "https://upload.wikimedia.org/wikipedia/en/f/fa/Univ_of_the_West_of_England_logo.png"

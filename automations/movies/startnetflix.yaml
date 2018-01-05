@@ -1,7 +1,7 @@
-alias: "movie start"
+alias: "movie start: Netflix"
 trigger:
     platform: state
-    entity_id: media_player.living_room
+    entity_id: media_player.loosleyloungecast
     to: 'playing'
 condition:
     condition: and
@@ -10,7 +10,7 @@ condition:
         entity_id: 'group.livingroom'
         state: "on"
       - condition: template
-        value_template: "{{ is_state_attr('media_player.living_room', 'media_content_type', 'movie') }}"
+        value_template: "{{ is_state_attr('media_player.loosleyloungecast', 'app_name', 'Netflix') }}"
 action:
   - service: light.turn_on
     entity_id: group.livingroom

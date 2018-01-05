@@ -1,13 +1,7 @@
 alias: "morning"
 trigger:
-  - platform: numeric_state
-    entity_id: sun.sun
-    value_template: '{{ state.attributes.elevation }}'
-    above: -6
-condition:
-  - condition: state
-    entity_id: sun.sun
-    state: above_horizon
+    platform: sun
+    event: sunrise
 action:
   - service: input_boolean.turn_off
     entity_id: input_boolean.nightmode

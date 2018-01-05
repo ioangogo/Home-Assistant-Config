@@ -3,20 +3,13 @@ trigger:
   - platform: state
     entity_id: group.all_devices
     to: 'home'
-  - platform: numeric_state
-    entity_id: sun.sun
-    value_template: '{{ state.attributes.elevation }}'
-    below: 1.0154538
+  - platform: sun
+    event: sunset
+    offset: '-00:45:00'
 condition:
-  - condition: and
-    conditions:
-    - condition: state
-      entity_id: group.all_devices
-      state: 'home'
-    - condition:  numeric_state
-      entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
-      below: 1.0154538
+    condition: state
+    entity_id: group.all_devices
+    state: 'home'
 
 action:
   - service: light.turn_on

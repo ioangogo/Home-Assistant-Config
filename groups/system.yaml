@@ -4,3 +4,4 @@ view: yes
 icon: mdi:linux
 entities:
   - group.speeddotnet
+  - group.printers

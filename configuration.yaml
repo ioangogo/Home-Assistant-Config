@@ -18,9 +18,9 @@ homeassistant:
 
 google_assistant:
   project_id: loosley-house
-  client_id: dkg2YmsJSSZEHCwUYPDGZY03xVbB4U2vEehPQdrM3IImBiOvhVUK
-  access_token: hCbtOMVd2VY92adSfYZL9JgXi0BIhav3QbgTWD6awbrnqBXpW8gMSJ2atEqvw2rpfQ6e9xv4Pp7Gq3DG
-  api_key: AIzaSyCRN-OPjA_sfaacuJM48oqgYLvntQrv79c 
+  client_id: !secret gCID
+  access_token: !secret gID
+  api_key: !secret gapiK
   exposed_domains:
     - media_player
     - switch
