@@ -1,2 +1,2 @@
 platform: cert_expiry
-host: huwloosley.plus.com
+host: !secret hostname
