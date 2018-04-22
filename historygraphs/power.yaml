@@ -1,0 +1,2 @@
+entities:
+ - sensor.current_cost_watt

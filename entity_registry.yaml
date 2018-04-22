@@ -1,0 +1,52 @@
+binary_sensor.kaipule_unknown_type0003_id0002_sensor:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093240320
+sensor.kaipule_unknown_type0003_id0002_alarm_type:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305281
+sensor.kaipule_unknown_type0003_id0002_alarm_level:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305297
+sensor.kaipule_unknown_type0003_id0002_sourcenodeid:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305313
+sensor.kaipule_unknown_type0003_id0002_burglar:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305441
+media_player.loosleyloungecast:
+  name:
+  platform: cast
+  unique_id: 85c269f4-c87a-ff84-9768-f97c4f7818c3
+media_player.the_bedroom_tv:
+  name:
+  platform: cast
+  unique_id: 64b0a5b5-7378-f443-65f6-6ca17d0678fb
+media_player.food_room:
+  name:
+  platform: cast
+  unique_id: 1a0a0c65-1a31-ac41-d64a-b2abd2d5bc4e
+light.living_room_lamp:
+  name:
+  platform: tradfri
+  unique_id: light-7e0c3152048000a3-65537
+light.ioans_light:
+  name:
+  platform: tradfri
+  unique_id: light-7e0c3152048000a3-65540
+light.master_bedroom_light:
+  name:
+  platform: tradfri
+  unique_id: light-7e0c3152048000a3-65543
+light.tall_light:
+  name:
+  platform: tradfri
+  unique_id: light-7e0c3152048000a3-65542
+light.landing:
+  name:
+  platform: tradfri
+  unique_id: light-7e0c3152048000a3-65538

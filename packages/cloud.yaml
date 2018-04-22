@@ -9,25 +9,57 @@ netatmo:
   password: !secret normalpass
 
 sensor:
-  platform: netatmo
-  modules:
-    Indoor:
+  - platform: google_travel_time 
+    name: Home To Work
+    api_key: !secret gmapsapikey 
+    origin: zone.home
+    destination: zone.work
+  - platform: google_travel_time
+    name: Time To UWE
+    api_key: !secret gmapsapikey
+    options:
+        mode: transit
+    origin: device_tracker.ioan_phone
+    destination: zone.uwe
+  - platform: rest
+    name: pollen
+    resource: !secret pollenurl
+    value_template: '{{value_json["forecast"][3]["pollen_count"]}}'
+    scan_interval: 21600
+    headers:
+       Referer: "https://www.benadryl.co.uk/social-pollen-count"
+  - platform: metoffice
+    api_key: !secret metkey
+    monitored_conditions:
+      - weather
       - temperature
+      - feels_like_temperature
+      - wind_speed
+      - wind_direction
+      - wind_gust
+      - visibility
+      - visibility_distance
+      - uv
+      - precipitation
       - humidity
-    Wombat Outdoor:
-      - temperature
-    WombatRain:
-      - sum_rain_24
-      - sum_rain_1
+  - platform: luftdaten
+    sensorid: !secret luftdaten
+    scan_interval: 140
+    monitored_conditions:
+      - P1
+      - P2
+  - platform: netatmo
+    modules:
+      Indoor:
+        - temperature
+        - humidity
+      Wombat Outdoor:
+        - temperature
+      WombatRain:
+        - sum_rain_24
+        - sum_rain_1
 
-telegram_bot:
-  - platform: webhooks
-    api_key: 341132699:AAFkCha2I8Davh2JlkWWEOoUqBpTEHXGJaA
-    url: https://huwloosley.plus.com
-    parse_mode: html
-    allowed_chat_ids:
-        - "-294711871"
-        - 423466814
+
 
 weather:
   - platform: metoffice
@@ -49,7 +81,3 @@ notify:
     consumer_secret: !secret twittercs
     access_token: !secret twitterat
     access_token_secret: !secret twitterats
-  - name: pushetta
-    platform: pushetta
-    api_key: !secret pushetkey
-    channel_name: LoosleyHASS

@@ -2,6 +2,9 @@ trigger:
   platform: homeassistant
   event: start
 action:
-  service: notify.twitter
+- service: notify.twitter
+  data:
+    message: Hello, Just woke up
+- service: notify.livroom
   data:
     message: Hello, Just woke up

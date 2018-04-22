@@ -1,0 +1,6 @@
+platform: template
+sensors:
+    markfishtemp:
+        value_template: "{{ ((states('sensor.fish_tank_temperature') | float) * 9 / 5) + 32 }}"
+        unit_of_measurement: '°F'
+        friendly_name: 'Fish Tank Temperature'

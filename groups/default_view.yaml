@@ -2,15 +2,15 @@ view: yes
 icon: mdi:home
 entities:
  - sun.sun
- - device_tracker.carys
- - device_tracker.debbie_op2
- - device_tracker.huw_opo
- - device_tracker.ioan_phone
+ - group.family
  - climate.hall
+ - weather.met_office_bristol_city_fc
+ - sensor.uv_simple
  - group.ikealighting
  - sensor.ssl_certificate_expiry
  - input_boolean.overide_home
  - group.temps
  - binary_sensor.ping_binary_sensor
  - updater.updater
- - group.remotes
+ - sensor.time
+ - sensor.home_to_work

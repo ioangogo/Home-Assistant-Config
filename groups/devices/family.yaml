@@ -1,0 +1,7 @@
+name: Family
+view: no
+icon: mdi:home-heart
+entities:
+  - device_tracker.debbie_op2
+  - device_tracker.huw_opo
+  - device_tracker.ioan_phone

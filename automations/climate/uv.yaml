@@ -1,0 +1,14 @@
+alias: "UV Advice"
+trigger:
+    platform: state
+    entity_id: sensor.uv_advice 
+action:
+ -   service: notify.html
+     data_template:
+         title: "UV Advice"
+         message: "\u2600 \uD83D\uDD76\uFE0F {{ states('sensor.uv_advice') }}" 
+ -   service: notify.twitter
+     data_template:
+         title: ""
+         message: "\u2600 \uD83D\uDD76\uFE0F {{ states('sensor.uv_advice') }}"
+

@@ -7,3 +7,4 @@ entities:
   - group.media
   - group.ttsout
   - media_player.spotify
+  - input_boolean.moviemode

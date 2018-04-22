@@ -1,3 +1,9 @@
 zone.uwe:
   entity_picture: https://upload.wikimedia.org/wikipedia/en/f/fa/Univ_of_the_West_of_England_logo.png
 sensor.mg7700lan: {}
+group.metoffice: {}
+group.family: {}
+sensor.current_cost:
+  icon: mdi:flash
+sensor.current_cost_watt:
+  icon: mdi:flash

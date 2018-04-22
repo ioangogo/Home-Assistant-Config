@@ -1,6 +1,0 @@
-name: Living Room Lights
-view: no
-icon: mdi:lightbulb-outline
-entities:
- - light.living_room_lamp
- - light.tall_light

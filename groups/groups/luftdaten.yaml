@@ -1,0 +1,6 @@
+name: Luftdaten
+view: no
+icon: mdi:weather-windy-variant
+entities:
+ - sensor.luftdaten_pm10
+ - sensor.luftdaten_pm25

@@ -2,4 +2,8 @@ name: Ioans Room
 view: yes
 entities:
  - switch.ioanpc
- - light.ioans_room
+ - light.ioans_light
+ - sensor.loadingartist
+ - media_player.ioans_bed
+ - zone.uwe 
+ - sensor.time_to_uwe

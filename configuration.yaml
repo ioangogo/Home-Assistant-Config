@@ -16,6 +16,19 @@ homeassistant:
 # Show links to resources in log and frontend
 # Enables the frontend
 
+light:
+ - platform: group
+   name: "Living Room Lights"
+   entities:
+    - light.living_room_lamp
+    - light.tall_light
+
+cloud:
+  alexa:
+    filter:
+      include_domains:
+       - light
+
 google_assistant:
   project_id: loosley-house
   client_id: !secret gCID
@@ -26,12 +39,20 @@ google_assistant:
     - switch
     - light
 
+homekit:
+  filter:
+    include_domains:
+     - light
+     - switch
+     - climate
+     - sensor
+
 frontend:
   themes: !include themes.yaml
 
 tradfri:
   host: 192.168.1.58
-
+  allow_tradfri_groups: false
 map:
 
 
@@ -42,6 +63,7 @@ panel_iframe:
 
 recorder:
  db_url: !secret sql
+ purge_interval: 0
 
 # Enables configuration UI
 config:
@@ -64,22 +86,25 @@ zwave:
   usb_path: /dev/ttyACM0
 
 
-alexa:
 
 intent_script: !include_dir_named intents/
 shopping_list:
 
-emulated_hue:
-  type: google_home
-  listen_port: 8300
-  off_maps_to_on_domains:
-    - script
-    - scene
-  expose_by_default: true
-  exposed_domains:
-    - light
-    - media_player
-    - switch
+feedreader:
+  urls:
+   - http://www.bristolwater.co.uk/incident/feed/
+
+#emulated_hue:
+#  type: google_home
+#  listen_port: 8300
+#  off_maps_to_on_domains:
+#    - script
+#    - scene
+#  expose_by_default: true
+#  exposed_domains:
+#    - light
+#    - media_player
+#    - switch
 
 # Checks for available updates
 updater:
@@ -100,7 +125,6 @@ logbook:
 # Track the sun
 sun:
 
-ios:
 # Weather Prediction
 
 
@@ -108,11 +132,14 @@ sensor scrape: !include_dir_list scrape/
 
 sensor: !include_dir_list sensors/
 
+history_graph: !include_dir_named historygraphs
+
 device_tracker:
   - platform: owntracks
     max_gps_accuracy: 50
     track_new_devices: no
   - platform: luci
+    track_new_devices: no 
     host: 192.168.1.1:80
     username: root
     password: !secret normalpass
@@ -157,12 +184,25 @@ switch:
 tts:
   platform: google
 
+wake_on_lan:
+
 media_player:
   - platform: cast
     host: 192.168.1.13
   - platform: kodi
     name: "Living Room"
     host: 192.168.1.49
+  - platform: kodi
+    name: "Ioans Bed"
+    host: 192.168.1.42
+  - platform: webostv
+    host: 192.168.1.40
+    name: "Living Room TV"
+    timeout: 5
+    turn_on_action:
+      service: wake_on_lan.send_magic_packet
+      data:
+        mac: "78:5D:C8:41:C7:71"
 
 mqtt:
   broker: 192.168.1.11
@@ -188,10 +228,14 @@ input_boolean:
     initial: on
   ioanbristol:
     initial: on
+  moviemode:
+    name: "Fade Lights at the start of media"
+    initial: on
+    icon: mdi:movie
 
 zone: !include zones.yaml
 
-group: !include_dir_named groups/
+group: !include_dir_named groups
 
 automation: !include_dir_list automations/
 
@@ -207,13 +251,16 @@ alarm_control_panel:
 
 notify:
   - platform: html5
+    name: html
     gcm_api_key: !secret gcmkey
     gcm_sender_id: !secret gcmid
-  - name: Doorbell
-    platform: group
-    services:
-      - service: html5
-      - service: pushetta
+  - platform: webostv
+    host: 192.168.1.40
+    name: livingroom
+  - platform: kodi
+    name: livroom
+    host: livroom
+    port: 8080
 
 input_select:
   radio_station:

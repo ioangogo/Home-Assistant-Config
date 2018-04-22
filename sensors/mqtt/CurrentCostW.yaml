@@ -1,0 +1,6 @@
+platform: mqtt
+state_topic: "home/poweruse"
+name: "Current Cost Watt"
+unit_of_measurement: "W"
+value_template: '{{ value_json.power0}}'
+

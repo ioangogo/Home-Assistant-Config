@@ -4,5 +4,8 @@ view: yes
 icon: mdi:weather-partlycloudy
 entities:
   - group.rain
-  - weather.met_office_bristol_city_fc
+  - group.metoffice
   - group.wind
+  - group.luftdaten
+  - sensor.pollen
+  - sensor.uv

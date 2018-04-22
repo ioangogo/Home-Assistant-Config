@@ -1,0 +1,38 @@
+sensor:
+    platform: template
+    sensors:
+        uv_advice:
+            friendly_name: "UV Advice"
+            icon_template: mdi:sunglasses
+            value_template: >-
+                {% if states("sensor.met_office_uv") | int == 0%}
+                    No Risk
+                {% elif states("sensor.met_office_uv") | int <= 2 %}
+                    Low Exposure, No need for suncream
+                {% elif states("sensor.met_office_uv") | int >= 3 and states("sensor.met_office_uv") | int <= 5 %}
+                    Medium Exposure, you may want to put suncream on
+                {% elif states("sensor.met_office_uv") | int >= 6 and states("sensor.met_office_uv") | int <= 7 %}
+                    High exposure, Put suncream on, cover up and seek shade
+                {% elif states("sensor.met_office_uv") | int >= 8 and states("sensor.met_office_uv") | int <= 10 %}
+                    Very High exposure, Put suncream on, cover up and avoid being outside during midday hours
+                {% else %}
+                    Just stay inside, its to warm outside anyway
+                {% endif %}
+        uv_simple:
+            friendly_name: "UV Advice"
+            icon_template: mdi:sunglasses
+            value_template: >-
+                {% if states("sensor.met_office_uv") | int == 0%}
+                    No Risk
+                {% elif states("sensor.met_office_uv") | int <= 2 and states("sensor.met_office_uv") | int >= 1 %}
+                    Low
+                {% elif states("sensor.met_office_uv") | int >= 3 and states("sensor.met_office_uv") | int <= 5 %}
+                    Medium
+                {% elif states("sensor.met_office_uv") | int >= 6 and states("sensor.met_office_uv") | int <= 7 %}
+                    High
+                {% elif states("sensor.met_office_uv") | int >= 8 and states("sensor.met_office_uv") | int <= 10 %}
+                    Very High
+                {% else %}
+                    EXTREME
+                {% endif %}
+

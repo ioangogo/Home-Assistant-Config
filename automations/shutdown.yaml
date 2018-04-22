@@ -2,6 +2,11 @@ trigger:
   platform: homeassistant
   event: shutdown
 action:
-  service: notify.twitter
-  data:
-    message: Goodbye, going down for a mo
+ - service: notify.twitter
+   data:
+     message: Goodbye, going down for a mo
+
+ - service: notify.livingroom
+   data:
+     message: Goodbye, going down for a mo
+

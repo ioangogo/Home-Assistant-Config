@@ -1,0 +1,7 @@
+name: Utilitys
+view: yes
+icon: mdi:flash
+entities:
+  - sensor.current_cost
+  - sensor.current_cost_watt
+  - history_graph.power

@@ -3,14 +3,19 @@ trigger:
   - platform: state
     entity_id: group.all_devices
     to: 'home'
-  - platform: sun
-    event: sunset
-    offset: '-00:45:00'
+  - platform: state
+    entity_id: input_boolean.nightmode
+    from: 'off'
+    to: 'on'
+  - platform: homeassistant
+    event: start
 condition:
-    condition: state
-    entity_id: group.all_devices
+ -  condition: state
+    entity_id: group.family
     state: 'home'
-
+ -  condition: state
+    entity_id: input_boolean.nightmode
+    state: "on"
 action:
   - service: light.turn_on
     data:
