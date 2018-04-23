@@ -43,6 +43,7 @@ zones.yaml
 *.deb
 *.sh
 *.pickle
+*.cookies
 
 # Folders
 www

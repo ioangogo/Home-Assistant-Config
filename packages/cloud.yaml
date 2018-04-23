@@ -59,6 +59,8 @@ sensor:
         - sum_rain_24
         - sum_rain_1
 
+binary_sensor:
+  - platform: aurora
 
 
 weather:
@@ -81,3 +83,8 @@ notify:
     consumer_secret: !secret twittercs
     access_token: !secret twitterat
     access_token_secret: !secret twitterats
+
+device_tracker:
+  platform: google_maps
+  username: !secret Homegoogle
+  password: !secret Homegoogle_password

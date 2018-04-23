@@ -140,7 +140,7 @@ device_tracker:
     track_new_devices: no
   - platform: luci
     track_new_devices: no 
-    host: 192.168.1.1:80
+    host: 192.168.1.1:8080
     username: root
     password: !secret normalpass
 
@@ -261,7 +261,11 @@ notify:
     name: livroom
     host: livroom
     port: 8080
-
+  - platform: group
+    name: notify
+    services:
+      - service: html
+      - service: twitter
 input_select:
   radio_station:
     name: 'Select Radio Station:'
