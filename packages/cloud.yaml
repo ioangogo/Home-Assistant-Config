@@ -84,7 +84,3 @@ notify:
     access_token: !secret twitterat
     access_token_secret: !secret twitterats
 
-device_tracker:
-  platform: google_maps
-  username: !secret Homegoogle
-  password: !secret Homegoogle_password

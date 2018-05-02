@@ -63,8 +63,11 @@ panel_iframe:
 
 recorder:
  db_url: !secret sql
- purge_interval: 0
-
+ purge_interval: 7
+ purge_keep_days: 90
+ exclude:
+  entities:
+   time.time
 # Enables configuration UI
 config:
 
@@ -285,3 +288,4 @@ input_select:
 
 #mqtt_statestream:
 #  base_topic: homeassistant
+
